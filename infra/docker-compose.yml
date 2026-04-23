@@ -1,0 +1,20 @@
+services:
+  navidrome:
+    image: deluan/navidrome:latest
+    user: 1000:1000 # should be owner of volumes
+    ports:
+      - "4533:4533"
+    restart: unless-stopped
+    environment:
+      ND_ENABLETRANSCODINGCONFIG: true
+    volumes:
+      - "/root/musicserver/data:/data"
+      - "/root/musicserver/music:/music:ro"
+
+  filebrowser:
+    image: filebrowser/filebrowser:latest
+    user: "1000:1002"  # filebrowser user, music group
+    volumes:
+      - /root/musicserver/music:/srv
+      - ./filebrowser.db:/database.db
+    ports: ["9999:80"]

@@ -2,3 +2,6 @@
 downloads/
 .DS_Store
 .vscode/
+*.db
+volumes/
+__pycache__/

@@ -1,0 +1,21 @@
+<div id="job-{{ job.id }}" class="job">
+  <details {% if job.status == 'downloading' %}open{% endif %}>
+    <summary>
+      <span id="dot-{{ job.id }}" class="job-dot dot-{{ job.status }}"></span>
+      <span class="job-url">{{ job.url }}</span>
+      <span id="meta-{{ job.id }}" class="job-meta">
+        {%- if job.meta and job.meta.artist -%}
+          {{ job.meta.artist }}{% if job.meta.album %} — {{ job.meta.album }}{% endif %}
+        {%- elif job.error -%}
+          {{ job.error[:60] }}
+        {%- endif -%}
+      </span>
+      <span id="badge-{{ job.id }}" class="job-badge badge-{{ job.status }}">{{ job.status }}</span>
+    </summary>
+    <div class="log-inner" id="logs-{{ job.id }}">
+      {%- for log in job.logs %}
+      <span class="log-line">{{ log }}</span>
+      {%- endfor %}
+    </div>
+  </details>
+</div>

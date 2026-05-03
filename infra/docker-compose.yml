@@ -1,7 +1,6 @@
 services:
   sonus-downloader:
-    build:
-      context: ../services/downloader
+    image: ghcr.io/erenyenigul/sonus-downloader:latest
     ports:
       - "8080:8000"
     restart: unless-stopped

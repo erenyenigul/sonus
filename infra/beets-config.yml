@@ -1,0 +1,13 @@
+directory: ../volumes/music
+library: musiclibrary.db
+
+plugins: fetchart embedart
+
+fetchart:
+   high_resolution: yes
+   quality: 75
+   minwidth: 500
+   enforce_ratio: yes
+
+import:
+    copy: no
